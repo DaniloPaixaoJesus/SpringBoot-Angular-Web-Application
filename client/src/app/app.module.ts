@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageViewerComponent } from './components/imageviewer/imageviewer.component';
 import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 
-import { OnlyForDevComponent } from './components/only-for-dev/only-for-dev.component';
+import { CustomToolBarComponent } from './components/custom-toolbar/custom.toolbar.component';
 
 // Material UI
 import {
@@ -36,14 +36,22 @@ import {
   MatTreeModule
 } from '@angular/material';
 
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 // Rotas
 import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent} from './app.component';
-import {SearchUserComponent} from './components/user/search.user/search.user.component';
 import {LoginComponent} from './components/login/login.component';
+import {SearchUserComponent} from './components/user/search.user/search.user.component';
 import { FormUserComponent } from './components/user/form.user/form.user.component';
+
+import {SearchProcessComponent} from './components/process/search.process/search.process.component';
+import { FormProcessComponent } from './components/process/form.process/form.process.component';
+
+import {SearchLegalAdviceComponent} from './components/legal.advice/search.legal.advice/search.legal.advice.component';
+import { FormLegalAdviceComponent } from './components/legal.advice/form.legal.advice/form.legal.advice.component';
 
 
 @NgModule({
@@ -52,9 +60,12 @@ import { FormUserComponent } from './components/user/form.user/form.user.compone
     LoginComponent,
     SearchUserComponent,
     FormUserComponent,
-
+    SearchProcessComponent,
+    FormProcessComponent,
+    SearchLegalAdviceComponent,
+    FormLegalAdviceComponent,
     ImageViewerComponent,
-    OnlyForDevComponent
+    CustomToolBarComponent
   ],
   imports: [
     // ##CORE
@@ -84,6 +95,7 @@ import { FormUserComponent } from './components/user/form.user/form.user.compone
     MatSidenavModule,
     MatBadgeModule,
     MatDialogModule,
+    FlexLayoutModule,
     // ##MATERIAL
 
     // ##IMAGE VIEWER

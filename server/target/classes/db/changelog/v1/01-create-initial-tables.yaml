@@ -33,6 +33,11 @@ databaseChangeLog:
                   type: varchar(55)
                   constraints:
                     nullable: false
+              - column:
+                  name: status
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
   - changeSet:
       id: create-processes-20180826
       author: danilo.paixao
@@ -48,13 +53,18 @@ databaseChangeLog:
                     primaryKey: true
                     autoIncrement: true
               - column:
-                  name: name
+                  name: code
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: summary
                   type: varchar(55)
                   constraints:
                     nullable: false
               - column:
                   name: description
-                  type: varchar(255)
+                  type: varchar(500)
                   constraints:
                     nullable: false
               - column:
@@ -62,14 +72,25 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: false
+              - column:
+                  name: finished_by
+                  type: bigint
+                  constraints:
+                    nullable: true
         - addForeignKeyConstraint: 
-            constraintName: fk_processes_users
+            constraintName: fk_processes_users_created_by
             baseColumnNames: created_by
             baseTableName: processes
             referencedColumnNames: id
             referencedTableName: users
+        - addForeignKeyConstraint: 
+            constraintName: fk_processes_users_finished_by
+            baseColumnNames: finished_by
+            baseTableName: processes
+            referencedColumnNames: id
+            referencedTableName: users
   - changeSet:
-      id: create-processes-20180826
+      id: create-legal-advices-20180826
       author: danilo.paixao
       changes:
         - createTable: 
@@ -83,28 +104,56 @@ databaseChangeLog:
                     primaryKey: true
                     autoIncrement: true
               - column:
-                  name: name
-                  type: varchar(55)
+                  name: id_process
+                  type: bigint
                   constraints:
                     nullable: false
               - column:
                   name: description
                   type: varchar(255)
                   constraints:
-                    nullable: false
+                    nullable: true
               - column:
                   name: created_by
                   type: bigint
                   constraints:
                     nullable: false
+              - column:
+                  name: finished_by
+                  type: bigint
+                  constraints:
+                    nullable: true
+              - column:
+                  name: responsable_for
+                  type: bigint
+                  constraints:
+                    nullable: false
         - addForeignKeyConstraint: 
-            constraintName: fk_legal_advice_users
+            constraintName: fk_legal_advices_users_created_by
             baseColumnNames: created_by
             baseTableName: legal_advices
             referencedColumnNames: id
             referencedTableName: users
+        - addForeignKeyConstraint: 
+            constraintName: fk_legal_advices_users_finished_by
+            baseColumnNames: finished_by
+            baseTableName: legal_advices
+            referencedColumnNames: id
+            referencedTableName: users
+        - addForeignKeyConstraint: 
+            constraintName: fk_legal_advices_users_responsable_for
+            baseColumnNames: responsable_for
+            baseTableName: legal_advices
+            referencedColumnNames: id
+            referencedTableName: users
+        - addForeignKeyConstraint: 
+            constraintName: fk_legal_advices_processes_id_process
+            baseColumnNames: id_process
+            baseTableName: legal_advices
+            referencedColumnNames: id
+            referencedTableName: processes
   - changeSet:
-      id: initLoad
+      id: initLoad-user
       author: danilo.paixao
       changes:
         - loadData:
@@ -113,3 +162,23 @@ databaseChangeLog:
             schemaName: public
             separator: ","
             tableName: users
+  - changeSet:
+      id: initLoad-process
+      author: danilo.paixao
+      changes:
+        - loadData:
+            encoding: UTF-8
+            file: db/changelog/v1/process.csv
+            schemaName: public
+            separator: ","
+            tableName: processes
+  - changeSet:
+      id: initLoad-legal-advice
+      author: danilo.paixao
+      changes:
+        - loadData:
+            encoding: UTF-8
+            file: db/changelog/v1/legaladvice.csv
+            schemaName: public
+            separator: ","
+            tableName: legal_advices

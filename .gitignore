@@ -3,13 +3,19 @@
 # compiled output
 /client/tmp
 /server/tmp
+<<<<<<< HEAD
 # /client/dist
+=======
+>>>>>>> origin/danilo.paixao.jesus
 /out-tsc
 
 
 # dependencies
 /client/node_modules
+<<<<<<< HEAD
 # /server/target
+=======
+>>>>>>> origin/danilo.paixao.jesus
 
 # data
 /data/*

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../services/user/user.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { UserService } from '../../../services/user/user.service';
 import { User } from '../../../services/user/user.model'
 
 @Component({
@@ -10,7 +10,7 @@ import { User } from '../../../services/user/user.model'
 })
 export class SearchUserComponent implements OnInit {
 
-  private users: User[];
+  users: User[];
 
   // exibicao de mensagem de erro na tela
   isError: Boolean = false;
@@ -25,8 +25,12 @@ export class SearchUserComponent implements OnInit {
     private router: Router
   ) { }
 
-  routeFormUser() {
-    this.router.navigate(['/user/form']);
+  routeFormUser(id) {
+    this.router.navigate([`/user/form/${id}`]);
+  }
+
+  routeFormNewUser() {
+    this.router.navigate([`/user/form`]);
   }
 
   back() {
@@ -34,9 +38,6 @@ export class SearchUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    const isMobile = /Android|iPhone/i.test(window.navigator.userAgent);
-    console.log(`Plataforma ${window.navigator.userAgent}`);
-    
     this.userService.getAllUsers()
       .subscribe(res => {
         console.log('>>>> get users res=', res);
