@@ -77,18 +77,7 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: true
-        - addForeignKeyConstraint: 
-            constraintName: fk_processes_users_created_by
-            baseColumnNames: created_by
-            baseTableName: processes
-            referencedColumnNames: id
-            referencedTableName: users
-        - addForeignKeyConstraint: 
-            constraintName: fk_processes_users_finished_by
-            baseColumnNames: finished_by
-            baseTableName: processes
-            referencedColumnNames: id
-            referencedTableName: users
+        
   - changeSet:
       id: create-legal-advices-20180826
       author: danilo.paixao
