@@ -1,4 +1,4 @@
-## Considerations about some architectural decisions::
+## Considerations about some architectural decisions
 
 SpringBoot -> java framework with the Convention over Configuration philosophy. Facilitates the configuration of the application and execution in the DEV environment since this one brings an embedded server.
 
