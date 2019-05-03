@@ -1,37 +1,27 @@
-## Algumas considerações a respeito de algumas decisões arquiteturais:
+## Considerations about some architectural decisions::
 
-SpringBoot -> framework java com a filosofia Convention over Configuration. Facilita a configuração da aplicação e a execução no ambiente DEV. Uma vez que este traz um servidor embarcado.
+SpringBoot -> java framework with the Convention over Configuration philosophy. Facilitates the configuration of the application and execution in the DEV environment since this one brings an embedded server.
 
-Liquibase -> Mantém histórico de todas as alterações da estrutura do banco de dados. Facilita o "rollback" de releases, facilidade para gerar script de carga.
+Liquibase -> Keeps history of all changes to the database structure. Facilitates rollback of releases, facility to generate load script.
 
-LomBok ->  excelente para abstracao de implementação de alguns padrões de projeto, além de acelerar o desenvolvimento e escrita do código.
+LomBok ->  excellent for abstracting some design patterns, as well as speeding up the development and writing of code.
 
-Swwager -> framework para documentação de API REST.
+Swwager -> framework for REST API documentation.
 
-Angular 6 e Material -> Rapidez no desenvolvimento de telas simples e que não demanda um alto controle do estado dos componentes.
+Angular 6 with Material Design -> Speed in the development of screens and user interface
 
 
-## Pré-requisitos para Dev ##
+## Prerequisites for Java Dev ##
 Node 8, Angular Cli 6, Maven, JDK Java 8, Docker, Docker-Compose, Lombok
 
-## Pré-requisitos para Deploy e Build ## 
+## Prerequisites for Deploy and Build ## 
 Docker, Docker-Compose
 
-## Passo a passo para Deploy ## 
-Instalar Docker
-Instalar Docker-compose
-Download do projeto
-Na raiz do projeto executar: docker-compose up --build -d
-Após alguns minutos, acessar:
- http://localhost -> Aplicacao
- http://localhost:8080/swagger-ui.html -> API
-
-Obs : caso fonte do client seja alterado, executar ng build, em seguida commit do dist.
-caso fonte do server seja alterado, executar npm package, em seguida commit do target.
-Necessário ambiente DEV para build do  client e do server
-
-## Stack de desenvolvimento ##
-BackEnd: Java 8; Spring Boot, Spring Data, Spring MVC, Spring Security, Lombok, Liquibase, Swagger, JWT
-Front: Angular Cli 6, Material, Typescript
-Banco de Dados: Postgres
-Docker, Docker Compose
+## Step by step for Deploy ## 
+Install Docker
+Instaall Docker-compose
+Clone project
+run on root project: docker-compose up --build -d
+Access:
+http://localhost -> App
+http://localhost:8080/swagger-ui.html -> API
